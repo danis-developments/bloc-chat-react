@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import ChatRoomForm from './components/ChatRoomForm';
 
 var config = {
   apiKey: "AIzaSyB5P7U-ahTOcLWA5hqvwHWhZ-RMkbrMZA4",
@@ -28,6 +29,7 @@ class App extends Component {
           <h1>Bloc Chat</h1>
         </header>
         <RoomList firebase={firebase} />
+        <ChatRoomForm firebase={firebase} />
       </div>
     );
   }
