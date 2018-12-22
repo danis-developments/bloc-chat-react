@@ -26,7 +26,7 @@ class ChatRoomForm extends Component {
       <form onSubmit={(e) => this.handleSubmit(e)}>
         <label>
           Create Chat Room:
-          <input id="newRoomName" type="text" value={this.state.name} onChange={(e) => this.handleChange(e)} />
+          <input id="newRoomName" type="text" placeholder={this.state.name} onChange={(e) => this.handleChange(e)} />
         </label>
         <input type="submit" value="Create Room" />
       </form>

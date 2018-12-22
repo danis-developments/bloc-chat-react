@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import "./RoomList.css"
 class RoomList extends Component {
   constructor(props){
     super(props);
@@ -17,15 +17,21 @@ class RoomList extends Component {
     });
   }
 
+  handleRoomClick(roomKey){
+    this.props.changeRoom(roomKey);
+  }
+
   render(){
     return (
       <div className="chat-room-names">
         <h2>Chat Rooms</h2>
-        <ul>
-          {this.state.rooms.map( (room, index) => 
-          <li key={index}>{room.name}</li>
+          {this.state.rooms.map( (room) => 
+          <p 
+            key={room.key} 
+            className={room.key === this.props.activeRoom ? "activeRoom" : "room"}
+            onClick={(roomKey) => this.handleRoomClick(room.key)} 
+          >{room.name}</p>
           )}
-        </ul>
       </div>
     );
   }
