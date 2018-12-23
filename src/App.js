@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
-import RoomList from './components/RoomList';
 import ChatRoomForm from './components/ChatRoomForm';
 import MessageList from './components/MessageList';
+import RoomList from './components/RoomList';
+import User from './components/User';
 
 var config = {
   apiKey: "AIzaSyB5P7U-ahTOcLWA5hqvwHWhZ-RMkbrMZA4",
@@ -20,14 +21,20 @@ class App extends Component {
     super(props);
     this.state = {
       activeRoom: '',
+      user: {},
     };
 
     this.changeRoom = this.changeRoom.bind(this);
+    this.setUser = this.setUser.bind(this);
 
   }
 
   changeRoom (roomKey) {
     this.setState({activeRoom: roomKey});
+  }
+
+  setUser (user) {
+    this.setState({user: user});
   }
 
   render() {
@@ -36,6 +43,11 @@ class App extends Component {
         <header className="App-header">
           <h1>Bloc Chat</h1>
         </header>
+        <User 
+          firebase={firebase} 
+          setUser={this.setUser}
+          user={this.state.user}
+        />
         <RoomList 
           firebase={firebase} 
           changeRoom={this.changeRoom} 
