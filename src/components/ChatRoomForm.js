@@ -10,7 +10,6 @@ class ChatRoomForm extends Component {
   }
   
   handleChange(e){
-    console.log(e.target.value);
     this.setState({name: e.target.value})
   }
   
@@ -28,7 +27,7 @@ class ChatRoomForm extends Component {
           Create Chat Room:
           <input id="newRoomName" type="text" placeholder={this.state.name} onChange={(e) => this.handleChange(e)} />
         </label>
-        <input type="submit" value="Create Room" />
+        <input className="btn" type="submit" value="Create Room" />
       </form>
     );
   }

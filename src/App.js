@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import ChatRoomForm from './components/ChatRoomForm';
+import MessageForm from './components/MessageForm';
 import MessageList from './components/MessageList';
 import RoomList from './components/RoomList';
 import User from './components/User';
@@ -55,6 +56,7 @@ class App extends Component {
         />
         <ChatRoomForm firebase={firebase} />
         <MessageList firebase={firebase} activeRoom={this.state.activeRoom} />
+        <MessageForm firebase={firebase} activeRoom={this.state.activeRoom} user={this.state.user} />
       </div>
     );
   }

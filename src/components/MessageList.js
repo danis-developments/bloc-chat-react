@@ -21,7 +21,10 @@ class MessageList extends Component {
 
   getRoomMessages(){
     const roomMessages = this.state.messages.filter( message => message.roomId == this.props.activeRoom);
-    if(roomMessages.length === 0){
+    if (this.props.activeRoom === ""){
+      return(<p>No room selected</p>);
+    }
+    else if(roomMessages.length === 0){
       return (<p>No messages in this room yet</p>);
     } 
     return roomMessages.map( (message, index) => 
