@@ -12,14 +12,13 @@ class MessageForm extends Component {
   }
 
   handleChange(e){
-    console.log(e.target.value);
     this.setState({newMessage: e.target.value});
   }
 
   handleSubmit(e){
-    if(this.props.user === {}){
-      alert("you must be logged in to post messages");
-    } else if (this.props.activeRoom === ""){
+    if(!this.props.user){
+      alert("you must be logged in to post a messages");
+    } else if (!this.props.activeRoom){
       alert("you must select a room before posting a message");
     } else {
       const messageObj = {
@@ -28,7 +27,6 @@ class MessageForm extends Component {
         roomId: this.props.activeRoom,
         sentAt: Date.now(),
       };
-      console.log(messageObj);
       this.messagesRef.push(messageObj);
       this.setState({newMessage:''});
     }
